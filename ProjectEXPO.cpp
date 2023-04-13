@@ -136,5 +136,27 @@ void Stop_Watch()
 }
 
 int main(){
-    Calculator();
+    int app;
+    do
+    {
+        cout << "Enter the number of the app you want to enter:\n1: Calculator\n0: Exit\nYour Choice: ";
+        cin >> app;
+        switch (app)
+        {
+        case 1:
+            Calculator();
+            system("pause");
+            break;
+
+        case 0:
+            break;
+
+        default:
+            cout << "Enter a valid number!\n";
+            system("pause");
+            break;
+        }
+    } while (app!=0);
+    cout << "Exiting Program...\n";
+    return 0;
 }
