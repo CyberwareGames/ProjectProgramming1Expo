@@ -40,11 +40,13 @@ double Square_root(double x)
         cout<<"Math Error";
         return -1;
     }
+    else
+        return sqrt(x);
 }
 
-double Exponent()
+double Exponent(double x, double y)
 {
-
+    return pow(x,y);
 }
 
 void Calculator()
