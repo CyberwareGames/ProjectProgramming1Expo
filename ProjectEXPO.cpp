@@ -1,7 +1,8 @@
 #include <iostream>
-
+#include <chrono>
 #include <cmath>
 
+using namespace std::chrono;
 using namespace std;
 
 char square[26] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
@@ -379,6 +380,62 @@ void TicTacToe()
 
 void Stop_Watch()
 {
+    auto start_time = steady_clock::now();
+    auto end_time = steady_clock::now();
+    auto paused_time = duration<double>::zero();
+    bool paused = false;
+    cout << "Enter \"start\" to start the timer and \"stop\" to stop the timer:" << endl;
+    while (true)
+    {
+        // Read user input
+        string input;
+        cin >> input;
+
+        if (input == "start")
+        {
+            // Start the timer
+            if (paused)
+            {
+                // If the timer was paused, add the paused time to the start time
+                start_time += duration_cast<steady_clock::duration>(paused_time);
+                paused_time = duration<double>::zero();
+                paused = false;
+            }
+            else
+            {
+                start_time = steady_clock::now();
+            }
+        }
+        else if (input == "stop")
+        {
+            // Stop the timer
+            end_time = steady_clock::now();
+            paused = false;
+            break;
+        }
+        else if (input == "pause")
+        {
+            // Pause the timer
+            if (!paused)
+            {
+                paused_time += duration_cast<duration<double>>(steady_clock::now() - start_time);
+                paused = true;
+            }
+        }
+        else if (input == "resume")
+        {
+            // Resume the timer
+            if (paused)
+            {
+                start_time = steady_clock::now();
+                paused = false;
+            }
+        }
+    }
+
+    // Calculate the elapsed time and print it
+    auto elapsed_time = duration_cast<duration<double>>(end_time - start_time - paused_time);
+    cout << "Elapsed time: " << elapsed_time.count() << " seconds" << endl;
 }
 
 int main()
@@ -386,7 +443,7 @@ int main()
     int app;
     do
     {
-        cout << "Enter the number of the app you want to enter:\n1: Calculator\n2: TicTacToe\n0: Exit\nYour Choice: ";
+        cout << "Enter the number of the app you want to enter:\n1: Calculator\n2: TicTacToe\n3: Stop Watch\n0: Exit\nYour Choice: ";
         cin >> app;
         switch (app)
         {
@@ -396,6 +453,10 @@ int main()
             break;
         case 2:
             TicTacToe();
+            system("pause");
+            break;
+        case 3:
+            Stop_Watch();
             system("pause");
             break;
         case 0:
