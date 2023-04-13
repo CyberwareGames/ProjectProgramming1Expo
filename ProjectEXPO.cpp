@@ -1,10 +1,16 @@
 #include <iostream>
 #include <chrono>
 #include <cmath>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std::chrono;
 using namespace std;
 
+const int MAX_WRONG = 8;
+vector<string> words = {"BASKETBALL", "VOLLEYBALL", "FOOTBALL", "SWIMMING", "RUNNING", "CYCLING", "TENNIS"};
 char square[26] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
 
 double Addition(double x, double y)
@@ -127,6 +133,68 @@ void Calculator()
 
 void Hangman()
 {
+    srand(static_cast<unsigned int>(time(0)));
+    int random_index = rand() % words.size();
+    string word = words[random_index];
+
+    int wrong = 0;
+    string so_far(word.size(), '-');
+    string used = "";
+
+    cout << "Welcome to Hangman. Good luck!\n";
+
+    while (wrong < MAX_WRONG && so_far != word)
+    {
+        cout << "\n\nYou have " << (MAX_WRONG - wrong) << " incorrect guesses left.\n";
+        cout << "\nYou've used the following letters:\n"
+             << used << endl;
+        cout << "\nSo far, the word is:\n"
+             << so_far << endl;
+
+        char guess;
+        cout << "\nEnter your guess: ";
+        cin >> guess;
+        guess = toupper(guess);
+
+        while (used.find(guess) != string::npos)
+        {
+            cout << "\nYou've already guessed " << guess << endl;
+            cout << "Enter your guess: ";
+            cin >> guess;
+            guess = toupper(guess);
+        }
+
+        used += guess;
+
+        if (word.find(guess) != string::npos)
+        {
+            cout << "That's right! " << guess << " is in the word.\n";
+
+            for (int i = 0; i < word.length(); ++i)
+            {
+                if (word[i] == guess)
+                {
+                    so_far[i] = guess;
+                }
+            }
+        }
+        else
+        {
+            cout << "Sorry, " << guess << " isn't in the word.\n";
+            ++wrong;
+        }
+    }
+
+    if (wrong == MAX_WRONG)
+    {
+        cout << "\nYou've been hanged!";
+    }
+    else
+    {
+        cout << "\nYou guessed it!";
+    }
+
+    cout << "\nThe word was " << word << endl;
 }
 
 void board()
@@ -443,7 +511,7 @@ int main()
     int app;
     do
     {
-        cout << "Enter the number of the app you want to enter:\n1: Calculator\n2: TicTacToe\n3: Stop Watch\n0: Exit\nYour Choice: ";
+        cout << "Enter the number of the app you want to enter:\n1: Calculator\n2: TicTacToe\n3: Stop Watch\n4: HangMan\n0: Exit\nYour Choice: ";
         cin >> app;
         switch (app)
         {
@@ -457,6 +525,10 @@ int main()
             break;
         case 3:
             Stop_Watch();
+            system("pause");
+            break;
+        case 4:
+            Hangman();
             system("pause");
             break;
         case 0:
