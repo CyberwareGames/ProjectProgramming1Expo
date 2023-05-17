@@ -1,17 +1,487 @@
 #include <iostream>
-#include <chrono>
 #include <cmath>
 #include <string>
 #include <vector>
 #include <cstdlib>
-#include <ctime>
 
-using namespace std::chrono;
 using namespace std;
 
 const int MAX_WRONG = 8;
 vector<string> words = {"BASKETBALL", "VOLLEYBALL", "FOOTBALL", "SWIMMING", "RUNNING", "CYCLING", "TENNIS"};
 char square[26] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'};
+
+void Display_Array(string menu[], int size)
+{
+    cout << "Menu:\n";
+    for (int i = 0; i < size; i++)
+    {
+        cout << i + 1 << ": " << menu[i] << endl;
+    }
+    cout << "6: Exit\nYour Choice: ";
+}
+
+bool Rental_Process(int choice)
+{
+    int days;
+    int total;
+    int pricePerDay;
+    char checkout;
+
+    if (choice == 1)
+        pricePerDay = 25;
+    if (choice == 2)
+        pricePerDay = 30;
+    if (choice == 3)
+        pricePerDay = 35;
+    if (choice == 4)
+        pricePerDay = 40;
+    if (choice == 5)
+        pricePerDay = 45;
+
+    cout << "Number of days for rent: ";
+    cin >> days;
+    total = days * pricePerDay;
+    cout << "Your total is: " << total << "$" << endl;
+    cout << "Do you want to Checkout?(y/n) : ";
+    do
+    {
+        cin >> checkout;
+    } while (checkout != 'y' && checkout != 'n');
+    if (checkout == 'y')
+        return true;
+    else
+        return false;
+}
+
+void BMW()
+{
+    int choice;
+    string model_year[5] = {"e28 1801", "e30 1995", "e34 1993", "x5 2007", "x3 2004"};
+    char available[5] = {'y', 'y', 'y', 'y', 'y'};
+    do
+    {
+        Display_Array(model_year, 5);
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            if (available[0] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[0] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 2:
+            if (available[1] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[1] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 3:
+            if (available[2] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[2] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 4:
+            if (available[3] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[3] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 5:
+            if (available[4] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[4] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 6:
+            break;
+        default:
+            cout << "Invalid Input!\n";
+        }
+    } while (choice != 6);
+}
+
+void Mercedes()
+{
+    int choice;
+    string model_year[5] = {"e300 2005", "c63 2015", "g63 2020", "rocket 900 2019", "cls 300 2015"};
+    char available[5] = {'y', 'y', 'y', 'y', 'y'};
+    do
+    {
+        Display_Array(model_year, 5);
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            if (available[0] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[0] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 2:
+            if (available[1] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[1] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 3:
+            if (available[2] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[2] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 4:
+            if (available[3] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[3] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 5:
+            if (available[4] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[4] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 6:
+            break;
+        default:
+            cout << "Invalid Input!\n";
+        }
+    } while (choice != 6);
+}
+
+void Toyota()
+{
+    int choice;
+    string model_year[5] = {"corolla 2005", "yaris 2020", "supra mk4 1999", "rav4 2003", "camry 2017"};
+    char available[5] = {'y', 'y', 'y', 'y', 'y'};
+    do
+    {
+        Display_Array(model_year, 5);
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            if (available[0] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[0] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 2:
+            if (available[1] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[1] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 3:
+            if (available[2] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[2] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 4:
+            if (available[3] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[3] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 5:
+            if (available[4] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[4] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 6:
+            break;
+        default:
+            cout << "Invalid Input!\n";
+        }
+    } while (choice != 6);
+}
+
+void Nissan()
+{
+    int choice;
+    string model_year[5] = {"350z 2010", "370z 2015", "400z 2020", "gtr r34 1999", "gtr r35 2023"};
+    char available[5] = {'y', 'y', 'y', 'y', 'y'};
+    do
+    {
+        Display_Array(model_year, 5);
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            if (available[0] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[0] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 2:
+            if (available[1] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[1] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 3:
+            if (available[2] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[2] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 4:
+            if (available[3] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[3] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 5:
+            if (available[4] == 'y')
+            {
+                if (Rental_Process(choice))
+                {
+                    available[4] = 'n';
+                    cout << "Car Rented Successfully.\n";
+                    system("pause");
+                }
+            }
+            else
+            {
+                cout << "Car is not available.\n";
+                system("pause");
+            }
+            break;
+        case 6:
+            break;
+        default:
+            cout << "Invalid Input!\n";
+        }
+    } while (choice != 6);
+}
+
+void Car_Rental()
+{
+    int choice;
+    do
+    {
+        cout << "Car Type Menu:\n1:BMW\n2:Mercedes\n3:Toyota\n4:Nissan\n5:Exit\nYour Choice: ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            BMW();
+            system("pause");
+            break;
+        case 2:
+            Mercedes();
+            system("pause");
+            break;
+        case 3:
+            Toyota();
+            system("pause");
+            break;
+        case 4:
+            Nissan();
+            system("pause");
+            break;
+        case 5:
+            break;
+        default:
+            cout << "Invalid Input!\n";
+            system("pause");
+        }
+    } while (choice != 5);
+}
 
 double Addition(double x, double y)
 {
@@ -444,66 +914,32 @@ void TicTacToe()
         cout << "\t\t\t\t\t\t==>\aPlayer " << --player << " win \n";
     else
         cout << "\t\t\t\t\t\t==>\aGame draw\n";
-}
 
-void Stop_Watch()
-{
-    auto start_time = steady_clock::now();
-    auto end_time = steady_clock::now();
-    auto paused_time = duration<double>::zero();
-    bool paused = false;
-    cout << "Enter \"start\" to start the timer and \"stop\" to stop the timer:" << endl;
-    while (true)
-    {
-        // Read user input
-        string input;
-        cin >> input;
-
-        if (input == "start")
-        {
-            // Start the timer
-            if (paused)
-            {
-                // If the timer was paused, add the paused time to the start time
-                start_time += duration_cast<steady_clock::duration>(paused_time);
-                paused_time = duration<double>::zero();
-                paused = false;
-            }
-            else
-            {
-                start_time = steady_clock::now();
-            }
-        }
-        else if (input == "stop")
-        {
-            // Stop the timer
-            end_time = steady_clock::now();
-            paused = false;
-            break;
-        }
-        else if (input == "pause")
-        {
-            // Pause the timer
-            if (!paused)
-            {
-                paused_time += duration_cast<duration<double>>(steady_clock::now() - start_time);
-                paused = true;
-            }
-        }
-        else if (input == "resume")
-        {
-            // Resume the timer
-            if (paused)
-            {
-                start_time = steady_clock::now();
-                paused = false;
-            }
-        }
-    }
-
-    // Calculate the elapsed time and print it
-    auto elapsed_time = duration_cast<duration<double>>(end_time - start_time - paused_time);
-    cout << "Elapsed time: " << elapsed_time.count() << " seconds" << endl;
+    square[1] = '1';
+    square[2] = '2';
+    square[3] = '3';
+    square[4] = '4';
+    square[5] = '5';
+    square[6] = '6';
+    square[7] = '7';
+    square[8] = '8';
+    square[9] = '9';
+    square[10] = 'a';
+    square[11] = 'b';
+    square[12] = 'c';
+    square[13] = 'd';
+    square[14] = 'e';
+    square[15] = 'f';
+    square[16] = 'g';
+    square[17] = 'h';
+    square[18] = 'i';
+    square[19] = 'j';
+    square[20] = 'k';
+    square[21] = 'l';
+    square[22] = 'm';
+    square[23] = 'n';
+    square[24] = 'o';
+    square[25] = 'p';
 }
 
 int main()
@@ -511,7 +947,7 @@ int main()
     int app;
     do
     {
-        cout << "Enter the number of the app you want to enter:\n1: Calculator\n2: TicTacToe\n3: Stop Watch\n4: HangMan\n0: Exit\nYour Choice: ";
+        cout << "Enter the number of the app you want to enter:\n1: Calculator\n2: TicTacToe\n3: Car Rental\n4: HangMan\n0: Exit\nYour Choice: ";
         cin >> app;
         switch (app)
         {
@@ -524,7 +960,7 @@ int main()
             system("pause");
             break;
         case 3:
-            Stop_Watch();
+            Car_Rental();
             system("pause");
             break;
         case 4:
